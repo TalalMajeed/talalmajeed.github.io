@@ -365,18 +365,17 @@
                 return result;
             }
             function setTime() {
-                document.getElementById("time").innerHTML = getTimeRemaining();
-                if (
-                    document.getElementById("time").innerHTML ==
-                    "Wishing you the Best!"
-                ) {
+                const timeElement = document.getElementById("time");
+                const titleElement = document.getElementById("title");
+
+                timeElement.innerHTML = getTimeRemaining();
+                if (timeElement.innerHTML == "Wishing you the Best!") {
                     console.log("AWDAW");
-                    document.getElementById("title").innerHTML =
-                        "Happy Birthday Talal!";
-                    document.getElementById("time").innerHTML =
-                        getTimeRemaining();
+                    titleElement.innerHTML = "Happy Birthday Talal!";
+                    timeElement.innerHTML = getTimeRemaining();
                 } else {
-                    setInterval(setTime, 1000);
+                    clearInterval(window.intervalId);
+                    window.intervalId = setInterval(setTime, 1000);
                 }
             }
         </script>
